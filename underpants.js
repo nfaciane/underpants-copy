@@ -20,7 +20,9 @@ var _ = {};
 *   _.identity(5) === 5
 *   _.identity({a: "b"}) === {a: "b"}
 */
-
+_.identity = function(value){
+    return value;
+};
 
 /** _.typeOf
 * Arguments:
@@ -42,6 +44,16 @@ var _ = {};
 * _.typeOf([1,2,3]) -> "array"
 */
 
+_.typeOf = function(value){
+    if(Array.isArray(value)){
+        value = 'array';
+    } else if(value === null) {
+        value = 'null'; 
+    } else{
+        value = typeof(value);
+    }
+    return value;
+};
 
 /** _.first
 * Arguments:
@@ -60,7 +72,24 @@ var _ = {};
 *   _.first(["a", "b", "c"], 1) -> "a"
 *   _.first(["a", "b", "c"], 2) -> ["a", "b"]
 */
-
+_.first = function(array, number){
+    var result;
+if(!Array.isArray(array)){
+    result = [];
+} else{
+    if(!typeof(number) === 'number'){
+        result = array[0];
+    } else {
+        //if number is negative; if number is equal to 1; if number is >= 2
+        for(let i = 0; i < array.length; i++){
+            number *= i;
+        }
+        //else if condition; slice method
+        result = array[number];
+    }
+}
+return result;
+};
 
 /** _.last
 * Arguments:
@@ -129,8 +158,7 @@ var _ = {};
 *   _.each(["a","b","c"], function(e,i,a){ console.log(e)});
 *      -> should log "a" "b" "c" to the console
 */
-
-
+//
 /** _.unique
 * Arguments:
 *   1) An array
