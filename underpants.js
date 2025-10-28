@@ -275,11 +275,24 @@ return result;
 */
 
 _.every = function(collection, test){
-    if(Array.isArray === false){
-
-    } else {
-        
+    if(Array.isArray(collection)){
+//determine if test didnt recieve a function
+if(test === 'undefined'){
+    for(let i = 0; i < collection.length; i++){
+        //determine if the current item is falsey
+        if(!collection[i]){
+            return false;
+        }
     }
+}
+    } else { //else test recieved a function
+        for(let i = 0; i < collection.length; i++){
+            //determine if result of invoking test on current item, index, collection index
+            if(/invoke test on current item, index, collection/){
+
+            }
+        }
+    } 
 }
 
 _.every(['a', 'b'], function(str){ return str.length === 1});
