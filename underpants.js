@@ -77,16 +77,22 @@ _.first = function(array, number){
 if(!Array.isArray(array)){
     result = [];
 } else{
-    if(!typeof(number) === 'number'){
+    if(typeof number !== 'number'){
         result = array[0];
     } else {
         //if number is negative; if number is equal to 1; if number is >= 2
-        for(let i = 0; i < array.length; i++){
-            number *= i;
-        }
-        //else if condition; slice method
-        result = array[number];
+        if(number < 0){
+            result = [];
+        } else if(number === 1){
+            result = array[0];
+        } else if(number >= 2){
+            //else if condition; slice method
+            result = array.slice(0, number);
+    } else if(number > array.length){
+        result = array;
     }
+}
+
 }
 return result;
 };
@@ -109,6 +115,31 @@ return result;
 *   _.last(["a", "b", "c"], 2) -> ["b", "c"]
 */
 
+_.last = function(array, number){
+    //if array not array; return []
+    if(!Array.isArray(array)){
+        return [];
+    } else{
+        //if number not number; return last element in array
+        if(typeof number !== 'number'){
+            return array.pop();
+        } else{
+            //if number is negative; return []
+            if(number < 0){
+                return [];
+            //if number is equal to 1
+            } else if(number === 1){
+                return array.pop();
+            //if number is greater than or equal to 2
+            } else if(number >= 2 ){
+                return array.slice(-number);
+                //if number is greater than array
+            } else if(number > array.lenght){
+            return array;
+        }
+    }
+}
+};
 
 /** _.indexOf
 * Arguments:
@@ -126,6 +157,15 @@ return result;
 *   _.indexOf(["a","b","c"], "d") -> -1
 */
 
+_.indexOf = function(array, value){
+    //if value not array; return -1
+    if(!array.includes(value)){
+        return -1;
+    } else{
+        //if value not in array; return -1
+        //if value occures in array more than once; 
+    }
+};
 
 /** _.contains
 * Arguments:
