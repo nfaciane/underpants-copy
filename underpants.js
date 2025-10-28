@@ -158,7 +158,10 @@ return result;
 *   _.each(["a","b","c"], function(e,i,a){ console.log(e)});
 *      -> should log "a" "b" "c" to the console
 */
-//
+
+//if
+//else
+
 /** _.unique
 * Arguments:
 *   1) An array
@@ -271,6 +274,25 @@ return result;
 *   _.every([1,2,3], function(e){return e % 2 === 0}) -> false
 */
 
+_.every = function(collection, test){
+    if(Array.isArray === false){
+
+    } else {
+        
+    }
+}
+
+_.every(['a', 'b'], function(str){ return str.length === 1});
+//true because every string in the array has a length of 1
+
+_.every(['a', 'bb', 'c'], function(str){ return str.length === 1});
+//false because one item in the array doesnt have a length of 1
+
+_.every({ a: 1, b: 2}, function(value){ return value > 0});
+// true because the value at each key is greater than 0
+
+_.every({ a: 0, b: 1}, function(value){ return value > 0});
+// false because one value is not greater than 0
 
 /** _.some
 * Arguments:
