@@ -158,6 +158,26 @@ return result;
 *   _.each(["a","b","c"], function(e,i,a){ console.log(e)});
 *      -> should log "a" "b" "c" to the console
 */
+_.each = function(collection, func){
+    //determine if collection is an array
+    if(Array.isArray(collection)){
+        //loop over collection
+        for(let i = 0; i < collection.length; i++){
+            //call function func; passing in element, index, and collection as parameters
+            func(colection[i], i, collection);
+        }
+    } else { //else its an object
+        //iterate over the object
+            //invoke func on each property
+    }
+};
+//_.each(['a', 'b'], function(item){
+//    console.log(item);
+//});
+
+//_.each({ a: 1, b: 2}, function(value){
+//      console.log(value);
+//});
 
 //if
 //else
