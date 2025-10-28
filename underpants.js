@@ -162,8 +162,13 @@ _.indexOf = function(array, value){
     if(!array.includes(value)){
         return -1;
     } else{
-        //if value not in array; return -1
-        //if value occures in array more than once; 
+        //if value occures in array more than once;
+        if(array.filter(value).length > 1 ){
+            return array.find(value);
+        } else{
+            return array.find(value);
+        }
+        
     }
 };
 
