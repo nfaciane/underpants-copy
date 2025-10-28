@@ -307,6 +307,18 @@ _.every({ a: 1, b: 2}, function(value){ return value > 0});
 _.every({ a: 0, b: 1}, function(value){ return value > 0});
 // false because one value is not greater than 0
 
+_.every([1, 2, 3]); 
+// true because every item is truthy
+
+_.every([1, 2, null]);
+// false because one item is falsey
+
+_.every({ a: 1, b: 2});
+// true because every value is truthy
+
+_.every({ a: 1, b: null});
+// false because one value is falsey
+
 /** _.some
 * Arguments:
 *   1) A collection
