@@ -158,6 +158,12 @@ _.last = function(array, number){
 */
 
 _.indexOf = function(array, value){
+    for(let i = 0; i < array.length; i++){
+
+    }
+}
+
+_.indexOf = function(array, value){
     //if value not array; return -1
     if(!array.includes(value)){
         return -1;
@@ -256,6 +262,20 @@ _.each = function(collection, func){
 *   use _.each in your implementation
 */
 
+_.filter = function(array, func){
+    //let array = [1, 2, 3, 4, 5]
+    //let func  function
+
+    //create output array
+    const output = [];
+    //loop through array
+    for(let i = 0; i < array.length; i++){
+        //determine if result of invoking func is true 
+        if(func(array[i], i, array))
+    }
+};
+
+_.filter([1,2,3,4,5], function(x){return x % })
 
 /** _.reject
 * Arguments:
