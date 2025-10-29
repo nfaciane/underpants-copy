@@ -163,13 +163,15 @@ _.indexOf = function(array, value){
         return -1;
     } else{
         //if value occures in array more than once;
-        if(array.filter(value).length > 1 ){
-            return array.find(value);
+        var result = array.filter(element => element === value);
+        if(result.length > 1 ){
+            return result[0];
         } else{
-            return array.find(value);
+            
         }
         
     }
+    return array.find(value);
 };
 
 /** _.contains
