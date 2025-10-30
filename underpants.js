@@ -158,27 +158,19 @@ _.last = function(array, number){
 */
 
 _.indexOf = function(array, value){
-    for(let i = 0; i < array.length; i++){
-
-    }
-}
-
-_.indexOf = function(array, value){
     //if value not array; return -1
     if(!array.includes(value)){
         return -1;
-    } else{
-        //if value occures in array more than once;
-        var result = array.filter(element => element === value);
-        if(result.length > 1 ){
-            return result[0];
-        } else{
-            
+    } else{//if value occures in array more than once;
+    for(let i = 0; i < array.length; i++){
+        if(value === array[i]){
+          return  array.find(value);
         }
-        
     }
-    return array.find(value);
+
+}
 };
+
 
 /** _.contains
 * Arguments:
@@ -271,11 +263,11 @@ _.filter = function(array, func){
     //loop through array
     for(let i = 0; i < array.length; i++){
         //determine if result of invoking func is true 
-        if(func(array[i], i, array))
+        if(func(array[i], i, array)){}
     }
 };
 
-_.filter([1,2,3,4,5], function(x){return x % })
+//_.filter([1,2,3,4,5], function(x){return x %})
 
 /** _.reject
 * Arguments:
