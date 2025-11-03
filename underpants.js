@@ -187,6 +187,20 @@ _.indexOf = function(array, value){
 *   _.contains([1,"two", 3.14], "two") -> true
 */
 
+_.contains = function(array, value){
+    //if array includes value return true
+   
+    // if(array.includes(value)){
+    //     return true;
+    // } else{
+    //     return false;
+    // }
+
+    //use ternary operator
+    //:syntax: condition ?       valueIfTrue : valueIfFalse
+    //let array include value?       true    :   false
+    return array.includes(value) ? true : false;
+}
 
 /** _.each
 * Arguments:
@@ -209,7 +223,7 @@ _.each = function(collection, func){
         //loop over collection
         for(let i = 0; i < collection.length; i++){
             //call function func; passing in element, index, and collection as parameters
-            func(colection[i], i, collection);
+            func(collection[i], i, collection);
         }
     } else { //else its an object
         //iterate over the object
