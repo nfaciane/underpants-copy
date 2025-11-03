@@ -300,8 +300,12 @@ _.filter = function(array, func){
     //loop through array
     for(let i = 0; i < array.length; i++){
         //determine if result of invoking func is true 
-        if(func(array[i], i, array)){}
+        if(func(array[i], i, array)){
+            //return a new array of elements for which calling <function> returned true
+            output.push(array[i]);
+        }
     }
+    return output;
 };
 
 //_.filter([1,2,3,4,5], function(x){return x %})
