@@ -357,6 +357,24 @@ _.reject = function(array, func){
 }
 */
 
+_.partition = function(array, func){
+    //create storage array
+    let output = [];
+    let subArray1 = [];
+    let subArray2 = [];
+    //loop thru array
+    for(let i = 0; i < array.length; i++){
+        //if statement => Call <function> for each element in <array> passing it the arguments
+        if(func(array[i], i, array)){
+            subArray1.push(array[i]);
+        } else{
+            subArray2.push(array[i]);
+        }
+        
+    }
+    output.push(subArray1, subArray2);
+    return output;
+}
 
 /** _.map
 * Arguments:
