@@ -218,6 +218,7 @@ _.contains = function(array, value){
 *      -> should log "a" "b" "c" to the console
 */
 _.each = function(collection, func){
+    let properties;
     //determine if collection is an array
     if(Array.isArray(collection)){
         //loop over collection
@@ -225,9 +226,18 @@ _.each = function(collection, func){
             //call function func; passing in element, index, and collection as parameters
             func(collection[i], i, collection);
         }
-    } else { //else its an object
-        //iterate over the object
-            //invoke func on each property
+    }else{ //else not an array 
+        //if collection typeof is object and collection does NOT equal null; collection is an object
+        if(typeof collection === "object" && collection !== null){
+            //convert object properties into array
+            properties = Object.keys(collection);
+            //iterate over the object
+            for(let j = 0; j < properties.length; j++){
+                //call function func; passing in value, key, and collection as parameters
+                func(collection[properties[j]], properties[j], collection);
+            }
+        }
+
     }
 };
 //_.each(['a', 'b'], function(item){
