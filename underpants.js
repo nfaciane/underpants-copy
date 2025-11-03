@@ -164,7 +164,7 @@ _.indexOf = function(array, value){
     } else{//if value occures in array more than once;
     for(let i = 0; i < array.length; i++){
         if(value === array[i]){
-          return  array.find(value);
+          return i;
         }
     }
 
