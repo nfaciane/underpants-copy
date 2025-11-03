@@ -261,6 +261,19 @@ _.each = function(collection, func){
 *   _.unique([1,2,2,4,5,6,5,2]) -> [1,2,4,5,6]
 */
 
+_.unique = function(array){
+    //create storage array to hold unique elements
+    let uniqueElement = [];
+    //loop through array
+    for(let i = 0; i < array.length; i++){
+        //if storage array does NOT include array index value; push array index value to storage array
+        if(!uniqueElement.includes(array[i])){
+            uniqueElement.push(array[i]);
+        }
+    }
+    //return storage array
+    return uniqueElement;
+}
 
 /** _.filter
 * Arguments:
