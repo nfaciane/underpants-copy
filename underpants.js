@@ -392,6 +392,32 @@ _.partition = function(array, func){
 *   _.map([1,2,3,4], function(e){return e * 2}) -> [2,4,6,8]
 */
 
+_.map = function(collection, func){
+    let keys;
+    //create storage array
+    let output = [];
+    //if collection is array
+    if(Array.isArray(collection)){
+        //loop thru collection 
+        for(let i = 0; i < collection.length; i++){
+            //call <function>; the element, it's index, <collection>
+            output.push(func(collection[i], i, collection));
+        }
+    } else{//else collection NOT array
+        //if collection typeof equals object AND collection does NOT equal null
+        if(typeof collection === "object" && collection !== null){
+            //convert object values to array
+            keys = Object.keys(collection);
+            //loop thru collection.key array
+            for(let j = 0; j < keys.length; j++){
+            //call <function>;  the value, it's key, <collection>
+            output.push(func(collection[keys[j]], keys[j], collection));
+
+            }
+        }
+    }
+    return output;
+}
 
 /** _.pluck
 * Arguments:
