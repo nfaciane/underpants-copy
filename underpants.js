@@ -170,7 +170,7 @@ _.indexOf = function(array, value){
 
 }
 };
-
+  
 
 /** _.contains
 * Arguments:
@@ -457,25 +457,48 @@ _.pluck = function(array, property){
 */
 
 _.every = function(collection, test){
-    if(Array.isArray(collection)){
-//determine if test didnt recieve a function
-if(test === 'undefined'){
-    for(let i = 0; i < collection.length; i++){
-        //determine if the current item is falsey
-        if(!collection[i]){
-            return false;
+    var keyValues;
+    var result;
+  //if statement
+    //condition if collection is array
+  if(Array.isArray(collection)){ 
+    //invoke function test for every element in collection array: synatx call function array: element, index, collection
+    //loop thru collection array
+    for (let i = 0; i < collection.length; i++){
+        //call test function for collection array; synatx : element, index, collection
+        //if statement
+            //condition if test function return true for every element of array; return true
+        if(!test(collection[i], i, collection)){
+                //return false
+                return false;
+        } else{
+                result = true;
         }
     }
-}
-    } else { //else test recieved a function
-        for(let i = 0; i < collection.length; i++){
-            //determine if result of invoking test on current item, index, collection index
-            if(/invoke test on current item, index, collection/){
-
+  } else { //else collection not array
+    //if statement 
+        //condition if collection typeof equal object AND collection NOT equal null; collection is object
+        if(typeof collection === 'object' && collection !== null){ 
+            //call function test for every object in collection;  syntax call function object : value, key, collection
+            //convert object keys to array
+            keyValues = Object.keys(collection);
+            //loop thru collection of objects
+            for(let j = 0; j < keyValues.length; j++){
+                //call test function for collection array; synatx : value, key, collection
+                //if statement
+                    //condition if test function return true for every value of object; return true
+                if(!test(collection[keyValues[j]], keyValues[j], collection)){
+                    //return false
+                    return false;
+                } else{
+                    result = true;
+                }
             }
-        }
-    } 
-}
+        } 
+
+  }
+    return result;
+};
 
 _.every(['a', 'b'], function(str){ return str.length === 1});
 //true because every string in the array has a length of 1
