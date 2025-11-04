@@ -733,9 +733,26 @@ _.reduce = function(array, func, seed){
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
 
-_.extend = function(obj1, obj2, ...moreObjs){
-    //define target object obj1
-    let modifyObj = obj1;
+_.extend = function(obj1, obj2, ...objs){
+    //MAJOR NOTE *function will push all parameter objects into array named objs*
+        //want to modify obj1
+        
+
+    //copy properties or keys of obj2 and move to obj1; use for-in loop
+    for(let key in obj2){
+        obj1[key] = obj2[key];
+    }
+
+    //loop thru array of other objects if added; copy each objects properties/keys and move to obj1
+    for(let i = 0; i < objs.length; i++){
+        //copy properties or keys of each object; use for-in loop
+        for(let key in objs[i]){
+            obj1[key] = objs[i][key];
+        }
+
+    }
+    //return modified obj1
+    return obj1;
 }
 
 //////////////////////////////////////////////////////////////////////
