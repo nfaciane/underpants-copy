@@ -582,6 +582,85 @@ _.every({ a: 1, b: null});
 *   _.some([1,2,3], function(e){return e % 2 === 0}) -> true
 */
 
+_.some = function(collection, func){
+    var result; 
+    var keys;
+    //if collection is array
+    if(Array.isArray(collection)){
+        //if func not present
+        if(func === undefined){
+            //loop thru collection array
+            for(let i = 0; i < collection.length; i++){
+                //if element is truthy; return true
+                if(collection[i]){
+                    //return true
+                    return true;
+                } else{ //else element is falsy; return false
+                    //return false
+                    result = false;
+                }
+            }
+        }else{ //else func present; return if element is truthy/falsy
+            //loop thru collection array
+            for(let i = 0; i < collection.length; i++){
+                //calling <function> for every element of <collection> 
+                //syntax for array: current element, it's index, <collection>
+                //if result of calling func returns true; return true
+                if(func(collection[i], i, collection)){
+                    //return true
+                    return true;
+                } else{ //else all elements are false; return false
+                    result = false;
+                }
+            }
+            
+
+        }
+
+    }else{ //else object
+    //if collection object
+    if(typeof collection === 'object' && collection !== null){
+        //if func not present
+        if(func === undefined){
+            //convert object keys to array
+            keys = Object.keys(collection);
+            //loop thru collection object
+            for(let j = 0; j < keys.length; j++){
+                //if value returns truthy; return true
+                if(collection[keys[j]]){
+                    //return true
+                    return true;
+
+                } else{ //else all values are falsy; return false
+                    //return false
+                    result = false;
+
+                }
+            }
+        } else{ //func present; return if value is truthy/falsy
+            //convert object keys to array
+            keys = Object.keys(collection);
+            //loop thru collection object
+            for(let j = 0; j < keys.length; j++){
+                //calling <function> for every value of <collection> 
+                //syntax for object: current value, current key, <collection>
+                //if result of calling func returns true; return true
+                if(func(collection[keys[j]], keys[j], collection)){
+                    //return true
+                    return true;
+
+                } else{ //all values falsy; return false
+                    //return false
+                    result = false;
+                }
+            }
+        }
+    }
+    
+}
+    //return result;
+    return result;
+};
 
 /** _.reduce
 * Arguments:
