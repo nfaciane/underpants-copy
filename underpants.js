@@ -681,6 +681,42 @@ _.some = function(collection, func){
 *   _.reduce([1,2,3], function(previousSum, currentValue, currentIndex){ return previousSum + currentValue }, 0) -> 6
 */
 
+_.reduce = function(array, func, seed){
+    
+    let previousResult;
+    //Edge Case
+        //if seed present
+        if(seed !== undefined){
+            previousResult = seed;
+            //Call <function> for every element in <collection>
+            //syntax: previous result, element, index
+            //loop thru array
+            for(let i = 0; i < array.length; i++){
+            //Call <function> for every element in <collection>
+            //syntax: previous result, element, index
+            previousResult = func(previousResult, array[i], i);
+    
+            }
+
+        } else{ //else seed present; 
+            previousResult = array[0];
+            //Call <function> for every element in <collection>
+            //syntax: previous result, element, index
+            //loop thru array
+            for(let i = 1; i < array.length; i++){
+                
+            previousResult = func(previousResult, array[i], i);
+            }
+        }
+    
+       
+        
+        
+        
+    
+    //return final result
+    return previousResult;
+};
 
 /** _.extend
 * Arguments:
@@ -696,6 +732,11 @@ _.some = function(collection, func){
 *   _.extend(data, {b:"two"}); -> data now equals {a:"one",b:"two"}
 *   _.extend(data, {a:"two"}); -> data now equals {a:"two"}
 */
+
+_.extend = function(obj1, obj2, ...moreObjs){
+    //define target object obj1
+    let modifyObj = obj1;
+}
 
 //////////////////////////////////////////////////////////////////////
 // DON'T REMOVE THIS CODE ////////////////////////////////////////////
